@@ -1,0 +1,36 @@
+class Solution {
+    public static int minimumVerticalSum(ArrayList<ArrayList<Integer>> arr) {
+        // Your code here
+        
+        if (arr == null || arr.size() == 0) {
+            return 0;
+        }
+        
+        // Find the maximum number of columns
+        int maxCols = 0;
+        for (ArrayList<Integer> row : arr) {
+            maxCols = Math.max(maxCols, row.size());
+        }
+        
+        int minSum = Integer.MAX_VALUE;
+        
+        // Calculate sum for each column
+        for (int col = 0; col < maxCols; col++) {
+            int colSum = 0;
+            
+            // Add elements from this column across all rows
+            for (ArrayList<Integer> row : arr) {
+                // Check if this row has an element at this column index
+                if (col < row.size()) {
+                    colSum += row.get(col);
+                }
+            }
+            
+            // Update minimum sum
+            minSum = Math.min(minSum, colSum);
+        }
+        
+        return minSum;
+        
+    }
+}
