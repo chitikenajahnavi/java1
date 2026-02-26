@@ -1,0 +1,25 @@
+class Solution {
+     public static boolean isprime(int n){
+        if(n <= 1) return false;
+        for(int i = 2;i * i <= n;i++){
+            if(n % i == 0){
+                return false;
+            }
+        }
+        return true;
+    }
+    public static int nextPrime(int n) {
+        int totalnum = n + 100;
+        int st = n + 1;
+        int sum = 0;
+        for(int i = st; i <= totalnum;i++){
+            if(isprime(i)){
+                sum = i;
+                break;
+            }
+        }
+        return sum;
+
+    
+    }
+}
